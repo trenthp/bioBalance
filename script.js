@@ -41,7 +41,17 @@ function initNavigation() {
     navToggle?.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+        document.documentElement.classList.toggle('menu-open');
     });
+
+    // Helper to close mobile menu
+    function closeMobileMenu() {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
+    }
 
     // Close mobile nav on link click (except dropdown toggles)
     navLinks?.querySelectorAll('a').forEach(link => {
@@ -54,8 +64,7 @@ function initNavigation() {
                 e.preventDefault();
                 link.parentElement.classList.toggle('open');
             } else if (!link.closest('.dropdown-menu')) {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
+                closeMobileMenu();
             }
         });
     });
@@ -63,10 +72,12 @@ function initNavigation() {
     // Close dropdown on mobile when clicking a dropdown menu item
     navLinks?.querySelectorAll('.dropdown-menu a').forEach(link => {
         link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navLinks.classList.remove('active');
+            closeMobileMenu();
         });
     });
+
+    // Expose close function for Escape key handler
+    window.closeMobileMenu = closeMobileMenu;
 }
 
 /**
@@ -314,12 +325,8 @@ if (prefersReducedMotion.matches) {
  */
 document.addEventListener('keydown', (e) => {
     // Escape closes mobile nav
-    if (e.key === 'Escape') {
-        const navToggle = document.getElementById('nav-toggle');
-        const navLinks = document.getElementById('nav-links');
-
-        navToggle?.classList.remove('active');
-        navLinks?.classList.remove('active');
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+        window.closeMobileMenu?.();
     }
 });
 
