@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import settings from '../data/settings.json';
+
+const team = await getCollection('team');
+const sortedTeam = team.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="About Us | Bio Balance"
+  description="Meet the team at Bio Balance Integrative and Hormone Health. Compassionate medical care in Spokane, WA where your well-being is our top priority."
+>
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+        </div>
+        <div class="container hero-content">
+            <h1 data-animate="fade-up">
+                About <span class="gradient-text">{settings.siteName}</span>
+            </h1>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+                Compassionate medical care in {settings.location}, where your well-being is our top priority and healing begins with understanding.
+            </p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="about" style="background: var(--color-bg);">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Our Team</span>
+                <h2>Meet Your <span class="gradient-text">Provider</span></h2>
+            </div>
+            {sortedTeam.map(async (member) => {
+                const { Content } = await member.render();
+                return (
+                    <div class="approach-grid">
+                        <div class="approach-visual" data-animate="fade-right">
+                            <div class="visual-card" style="padding: 0; overflow: hidden;">
+                                <div style="aspect-ratio: 3/4; background: linear-gradient(135deg, rgba(10, 86, 148, 0.1) 0%, rgba(23, 30, 96, 0.1) 100%); display: flex; align-items: center; justify-content: center;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width: 80px; height: 80px; color: var(--color-primary); opacity: 0.5;">
+                                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="approach-content" data-animate="fade-left">
+                            <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">{member.data.name}</h3>
+                            <p style="color: var(--color-primary); font-weight: 500; margin-bottom: 1.5rem;">{member.data.title}</p>
+                            <div style="color: var(--color-text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
+                                <Content />
+                            </div>
+                            <div class="credentials">
+                                {member.data.credentials.map((credential) => (
+                                    <div class="credential">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                            <path d="M22 4L12 14.01l-3-3"/>
+                                        </svg>
+                                        <span>{credential}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="process" style="background: var(--color-bg-elevated);">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Our Promise</span>
+                <h2>Our Commitment <span class="gradient-text">to You</span></h2>
+            </div>
+            <div class="approach-grid" style="gap: var(--space-2xl);">
+                <div class="approach-content" data-animate="fade-right">
+                    <p style="color: var(--color-text-muted); font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        At {settings.siteName} {settings.siteTagline}, we believe in truly listening to your needs and personalizing our approach to help you feel your best. Your well-being is at the center of everything we do.
+                    </p>
+                    <p style="color: var(--color-text-muted); font-size: 1.125rem; line-height: 1.8;">
+                        We understand that every patient is unique, and we take the time to understand your individual health concerns, goals, and lifestyle. Our integrative approach combines the best of conventional medicine with evidence-based natural therapies to create a personalized treatment plan just for you.
+                    </p>
+                </div>
+                <div class="approach-features" data-animate="fade-left">
+                    <div class="approach-feature">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Compassionate Care</h4>
+                            <p>We treat every patient with empathy and respect.</p>
+                        </div>
+                    </div>
+                    <div class="approach-feature">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Trust & Transparency</h4>
+                            <p>Open communication and honest guidance throughout your journey.</p>
+                        </div>
+                    </div>
+                    <div class="approach-feature">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Your Time Matters</h4>
+                            <p>We take the time to listen and never rush your appointments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-orb cta-orb-1"></div>
+            <div class="cta-orb cta-orb-2"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-animate="fade-up">
+                <h2>Ready to <span class="gradient-text">Get Started?</span></h2>
+                <p>Schedule your consultation today and take the first step toward naturally restored health.</p>
+                <a href="/#book" class="btn btn-primary btn-lg">
+                    Schedule Your Evaluation
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

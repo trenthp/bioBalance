@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about/", "permanent": true },
+    { "source": "/services/bhrt.html", "destination": "/services/bhrt/", "permanent": true },
+    { "source": "/services/menopause.html", "destination": "/services/menopause/", "permanent": true },
+    { "source": "/services/trt.html", "destination": "/services/trt/", "permanent": true },
+    { "source": "/services/thyroid.html", "destination": "/services/thyroid/", "permanent": true },
+    { "source": "/services/pcos.html", "destination": "/services/pcos/", "permanent": true },
+    { "source": "/services/weight-loss.html", "destination": "/services/weight-loss/", "permanent": true }
+  ]
+}

@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { data } = service;
+---
+
+<BaseLayout
+  title={`${data.title} | Bio Balance`}
+  description={data.metaDescription}
+>
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+        </div>
+        <div class="container hero-content">
+            <h1 data-animate="fade-up">
+                {data.title.split(' ').slice(0, -1).join(' ')} <span class="gradient-text">{data.title.split(' ').slice(-1)[0]}</span>
+            </h1>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+                {data.heroSubtitle}
+            </p>
+            <div class="hero-cta" data-animate="fade-up" data-delay="300">
+                <a href="/#book" class="btn btn-primary btn-lg">
+                    Schedule Your Evaluation
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="about" style="background: var(--color-bg);">
+        <div class="container">
+            <div class="approach-grid">
+                <div class="approach-content" data-animate="fade-right">
+                    <span class="section-tag">{data.sectionTag}</span>
+                    <h2>{data.sectionTitle} <span class="gradient-text">{data.sectionTitleHighlight}</span></h2>
+                    {data.intro.map((paragraph) => (
+                        <p style="color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.7;">
+                            {paragraph}
+                        </p>
+                    ))}
+                    <div class="credentials" style="margin-top: 2rem;">
+                        {data.credentials.map((credential) => (
+                            <div class="credential">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <path d="M22 4L12 14.01l-3-3"/>
+                                </svg>
+                                <span>{credential}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div class="approach-visual" data-animate="fade-left">
+                    <div class="visual-card">
+                        <h3 style="margin-bottom: 1.5rem; text-align: center;">{data.symptomsTitle}</h3>
+                        <div class="visual-stats">
+                            {data.symptoms.map((symptom) => (
+                                <div class="mini-stat" style="margin-bottom: 1rem;">
+                                    <span class="mini-label" style="width: auto; margin-right: 1rem;">{symptom}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="services" style="background: var(--color-bg-elevated);">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">{data.benefitsTag}</span>
+                <h2>{data.benefitsTitle} <span class="gradient-text">{data.benefitsTitleHighlight}</span></h2>
+            </div>
+            <div class="symptoms-grid">
+                {data.benefits.map((benefit, index) => (
+                    <div class="symptom-card" data-animate="fade-up" data-delay={index * 100}>
+                        <div class="symptom-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="24" cy="24" r="20"/>
+                                <path d="M16 24l6 6 10-12"/>
+                            </svg>
+                        </div>
+                        <h3>{benefit.title}</h3>
+                        <p>{benefit.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-orb cta-orb-1"></div>
+            <div class="cta-orb cta-orb-2"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-animate="fade-up">
+                <h2>{data.ctaTitle} <span class="gradient-text">{data.ctaTitleHighlight}</span></h2>
+                <p>{data.ctaDescription}</p>
+                <a href="/#book" class="btn btn-primary btn-lg">
+                    Schedule Your Evaluation
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

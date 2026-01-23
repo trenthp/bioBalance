@@ -1,0 +1,19 @@
+{
+  "name": "biobalance",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "build:tina": "tinacms build && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "tina": "tinacms dev -c \"astro dev\""
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^9.0.4",
+    "@tinacms/cli": "^2.1.1",
+    "astro": "^5.16.15",
+    "tinacms": "^3.3.1"
+  }
+}

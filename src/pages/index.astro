@@ -1,0 +1,452 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import BookingForm from '../components/BookingForm.astro';
+import { getCollection } from 'astro:content';
+import settings from '../data/settings.json';
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+
+const testimonials = await getCollection('testimonials');
+const sortedTestimonials = testimonials.sort((a, b) => a.data.order - b.data.order);
+
+// Service features for homepage cards
+const serviceFeatures: Record<string, string[]> = {
+  bhrt: ['Personalized hormone protocols', 'Comprehensive hormone testing', 'Ongoing monitoring & optimization', 'Natural hormone formulations'],
+  menopause: ['Hot flash & night sweat relief', 'Mood stabilization support', 'Sleep quality improvement', 'Bone health optimization'],
+  trt: ['Comprehensive testosterone testing', 'Customized treatment protocols', 'Energy & strength restoration', 'Mental clarity enhancement'],
+  thyroid: ['Complete thyroid panel testing', 'Hypothyroid & hyperthyroid care', "Hashimoto's management", 'Metabolic optimization'],
+  pcos: ['Hormone regulation', 'Metabolic support', 'Fertility optimization', 'Symptom management'],
+  'weight-loss': ['Comprehensive metabolic testing', 'Personalized nutrition plans', 'Medical supervision', 'Long-term maintenance support'],
+};
+---
+
+<BaseLayout
+  title="Bio Balance | Integrative and Hormone Health | Spokane, WA"
+  description={settings.siteDescription}
+>
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="container hero-content">
+            <h1 data-animate="fade-up">
+                Your Health, <br><span class="gradient-text">Naturally Restored</span>
+            </h1>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+                Integrative Medicine and Hormone Health Services for Wellness in WA, ID, and UT.
+                We believe the body has the innate ability to heal itself.
+            </p>
+            <div class="hero-cta" data-animate="fade-up" data-delay="300">
+                <a href="#book" class="btn btn-primary btn-lg">
+                    Schedule Your Evaluation
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#services" class="btn btn-ghost btn-lg">Explore Services</a>
+            </div>
+            <div class="hero-stats" data-animate="fade-up" data-delay="400">
+                {settings.statesServedAbbr.map((state, index) => (
+                    <>
+                        <div class="stat">
+                            <span class="stat-number">{state}</span>
+                            <span class="stat-label">{settings.statesServed[index]}</span>
+                        </div>
+                        {index < settings.statesServedAbbr.length - 1 && <div class="stat-divider"></div>}
+                    </>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points" id="symptoms">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Sound Familiar?</span>
+                <h2>The Signs Your Body Is <br><span class="gradient-text">Out of Balance</span></h2>
+            </div>
+            <div class="symptoms-grid">
+                <div class="symptom-card" data-animate="fade-up" data-delay="0">
+                    <div class="symptom-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="24" cy="24" r="20"/>
+                            <path d="M24 14v10l6 6"/>
+                        </svg>
+                    </div>
+                    <h3>Persistent Fatigue</h3>
+                    <p>Exhausted despite adequate sleep? Hormonal imbalances often disrupt your body's natural energy production.</p>
+                </div>
+                <div class="symptom-card" data-animate="fade-up" data-delay="100">
+                    <div class="symptom-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="24" cy="24" r="20"/>
+                            <path d="M16 28c0-4 3.5-8 8-8s8 4 8 8"/>
+                            <circle cx="18" cy="20" r="2" fill="currentColor"/>
+                            <circle cx="30" cy="20" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Brain Fog</h3>
+                    <p>Struggling to focus or remember? Cognitive clarity is directly linked to optimal hormone levels.</p>
+                </div>
+                <div class="symptom-card" data-animate="fade-up" data-delay="200">
+                    <div class="symptom-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M24 4v8M24 36v8M4 24h8M36 24h8"/>
+                            <circle cx="24" cy="24" r="12"/>
+                            <path d="M24 18v12"/>
+                        </svg>
+                    </div>
+                    <h3>Stubborn Weight Gain</h3>
+                    <p>Diet and exercise not working? Metabolic dysfunction from hormonal shifts may be the hidden culprit.</p>
+                </div>
+                <div class="symptom-card" data-animate="fade-up" data-delay="300">
+                    <div class="symptom-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M24 4C14 4 8 14 8 24s6 20 16 20 16-10 16-20S34 4 24 4z"/>
+                            <path d="M24 14c-4 0-8 4-8 10s4 10 8 10"/>
+                        </svg>
+                    </div>
+                    <h3>Low Libido</h3>
+                    <p>Lost that spark? Sexual wellness is intimately connected to your hormonal health.</p>
+                </div>
+            </div>
+            <div class="pain-cta" data-animate="fade-up">
+                <p>These symptoms aren't inevitable signs of aging—they're signals your body needs support.</p>
+                <a href="#book" class="btn btn-primary">Get Your Hormone Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Our Services</span>
+                <h2>Comprehensive <span class="gradient-text">Treatment Solutions</span></h2>
+                <p class="section-desc">Utilizing diet, lifestyle modifications, natural supplements, hormone replacement, and traditional medications to optimize your health outcomes and longevity.</p>
+            </div>
+            <div class="services-grid">
+                {sortedServices.map((service, index) => (
+                    <ServiceCard
+                        title={service.data.title}
+                        description={service.data.description}
+                        features={serviceFeatures[service.slug] || []}
+                        href={`/services/${service.slug}/`}
+                        delay={index * 100}
+                        icon={service.slug}
+                    />
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach" id="approach">
+        <div class="container">
+            <div class="approach-grid">
+                <div class="approach-content" data-animate="fade-right">
+                    <span class="section-tag">Our Approach</span>
+                    <h2>Integrative Medicine for <span class="gradient-text">Natural Healing</span></h2>
+                    <p class="approach-lead">We believe the body has the innate ability to heal itself. Our approach combines diet, lifestyle modifications, natural supplements, hormone replacement, and traditional medications to optimize your health outcomes and longevity.</p>
+                    <div class="approach-features">
+                        <div class="approach-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+                                    <rect x="9" y="3" width="6" height="4" rx="1"/>
+                                    <path d="M9 12h6m-6 4h6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Data-Driven Protocols</h4>
+                                <p>Comprehensive bloodwork and diagnostics guide every decision.</p>
+                            </div>
+                        </div>
+                        <div class="approach-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Continuous Optimization</h4>
+                                <p>Regular monitoring ensures your protocol evolves with your progress.</p>
+                            </div>
+                        </div>
+                        <div class="approach-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Holistic Integration</h4>
+                                <p>We address lifestyle, nutrition, and stress alongside hormones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-visual" data-animate="fade-left">
+                    <div class="visual-card">
+                        <div class="visual-glow"></div>
+                        <div class="visual-content">
+                            <div class="metric-ring">
+                                <svg viewBox="0 0 200 200">
+                                    <circle cx="100" cy="100" r="90" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="none"/>
+                                    <circle cx="100" cy="100" r="90" stroke="url(#ringGrad)" stroke-width="12" fill="none"
+                                            stroke-dasharray="565" stroke-dashoffset="113" stroke-linecap="round"
+                                            class="progress-ring"/>
+                                    <defs>
+                                        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#0d9488"/>
+                                            <stop offset="100%" style="stop-color:#6366f1"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <div class="metric-value">
+                                    <span class="metric-number">80%</span>
+                                    <span class="metric-label">Optimization</span>
+                                </div>
+                            </div>
+                            <div class="visual-stats">
+                                <div class="mini-stat">
+                                    <span class="mini-label">Energy</span>
+                                    <div class="mini-bar"><div class="mini-fill" style="width: 85%"></div></div>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-label">Focus</span>
+                                    <div class="mini-bar"><div class="mini-fill" style="width: 78%"></div></div>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-label">Vitality</span>
+                                    <div class="mini-bar"><div class="mini-fill" style="width: 92%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">How It Works</span>
+                <h2>Your Path to <span class="gradient-text">Optimal Health</span></h2>
+                <p class="section-desc">A streamlined journey from consultation to transformation.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-line"></div>
+                <div class="process-step" data-animate="fade-up" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3>Schedule Consultation</h3>
+                        <p>Book your initial consultation to discuss symptoms, goals, and health history with our expert providers.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="150">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                        </div>
+                        <h3>Comprehensive Testing</h3>
+                        <p>Advanced lab work reveals your complete hormonal profile, providing the data we need to customize your protocol.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="300">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                            </svg>
+                        </div>
+                        <h3>Custom Protocol</h3>
+                        <p>Your personalized treatment plan is designed, addressing root causes with precision medicine approaches.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="450">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3>Transform & Thrive</h3>
+                        <p>Experience renewed energy, clarity, and vitality as your body returns to optimal function with ongoing support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Success Stories</span>
+                <h2>Real Results, <br><span class="gradient-text">Real Transformations</span></h2>
+            </div>
+            <div class="testimonials-slider" data-animate="fade-up">
+                {sortedTestimonials.map((testimonial) => (
+                    <TestimonialCard
+                        quote={testimonial.data.quote}
+                        authorName={testimonial.data.authorName}
+                        authorInitials={testimonial.data.authorInitials}
+                        authorDetail={testimonial.data.authorDetail}
+                        rating={testimonial.data.rating}
+                    />
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image" data-animate="fade-right">
+                    <div class="image-frame">
+                        <div class="frame-accent"></div>
+                        <img src="/images/Bio Balance Main Logo.svg" alt="Bio Balance Integrative and Hormone Health" style="width: 100%; height: auto; padding: 2rem;">
+                    </div>
+                </div>
+                <div class="about-content" data-animate="fade-left">
+                    <span class="section-tag">About {settings.siteName}</span>
+                    <h2>{settings.siteTagline} <span class="gradient-text">Hormone Health</span></h2>
+                    <p>{settings.siteName} was founded on a simple belief: the body has the innate ability to heal itself. We specialize in integrative medicine and hormone health, serving patients throughout Washington, Idaho, and Utah via telemedicine.</p>
+                    <p>Our approach utilizes diet, lifestyle modifications, natural supplements, hormone replacement, and traditional medications to optimize your health outcomes and longevity.</p>
+                    <div class="credentials">
+                        <div class="credential">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <path d="M22 4L12 14.01l-3-3"/>
+                            </svg>
+                            <span>{settings.telemedicineNote}</span>
+                        </div>
+                        <div class="credential">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <path d="M22 4L12 14.01l-3-3"/>
+                            </svg>
+                            <span>Serving {settings.statesServedAbbr.join(', ')}</span>
+                        </div>
+                        <div class="credential">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <path d="M22 4L12 14.01l-3-3"/>
+                            </svg>
+                            <span>Personalized Care Plans</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <BookingForm />
+
+    <!-- Contact Section -->
+    <section class="about" id="contact" style="background: var(--color-bg);">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Contact Us</span>
+                <h2>Get in <span class="gradient-text">Touch</span></h2>
+                <p class="section-desc">We're here to help you on your journey to optimal health.</p>
+            </div>
+            <div class="approach-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;" data-animate="fade-up">
+                <a href="#book" class="approach-feature" style="text-decoration: none; cursor: pointer;">
+                    <div class="feature-icon" style="background: var(--gradient-primary);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Book a Consultation</h4>
+                        <p style="color: var(--color-primary);">Schedule your evaluation today</p>
+                    </div>
+                </a>
+                <div class="approach-feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p><a href={`tel:${settings.phone}`} style="color: var(--color-primary);">{settings.phone}</a></p>
+                    </div>
+                </div>
+                <div class="approach-feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href={`mailto:${settings.email}`} style="color: var(--color-primary);">{settings.email}</a></p>
+                    </div>
+                </div>
+                <div class="approach-feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2v4M18 2v4M2 8h20M4 4h16a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Office Hours</h4>
+                        <p>{settings.hours}</p>
+                    </div>
+                </div>
+                <div class="approach-feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>{settings.location} ({settings.telemedicineNote})</p>
+                    </div>
+                </div>
+                <div class="approach-feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 7h14M5 12h14M5 17h10"/>
+                            <rect x="2" y="3" width="20" height="18" rx="2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Fax</h4>
+                        <p style="color: var(--color-text-muted);">{settings.fax}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

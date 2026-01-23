@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import settings from '../data/settings.json';
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+---
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <img src="/images/Bio Balance Logo Symbol.svg" alt="Bio Balance" class="logo-icon" style="width: 40px; height: 40px;">
+                    <span class="logo-text" style="color: #171e60;">{settings.siteName}</span>
+                </a>
+                <p>{settings.siteTagline}. Your Health, Naturally Restored. Serving {settings.statesServed.join(', ')}.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    {sortedServices.map((service) => (
+                        <li><a href={`/services/${service.slug}/`}>{service.data.shortTitle}</a></li>
+                    ))}
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/#approach">Our Approach</a></li>
+                    <li><a href="/#process">How It Works</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Get In Touch</h4>
+                <p><a href={`tel:${settings.phone}`} style="color: var(--color-text-muted);">{settings.phone}</a></p>
+                <p><a href={`mailto:${settings.email}`} style="color: var(--color-text-muted);">{settings.email}</a></p>
+                <p style="margin-top: 1rem;"><a href="/#book" class="btn btn-primary">Book Consultation</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {settings.year} {settings.siteName} {settings.siteTagline}. All rights reserved.</p>
+            <p class="disclaimer">{settings.disclaimer}</p>
+        </div>
+    </div>
+</footer>

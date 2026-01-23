@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  titleHighlight?: string;
+  subtitle: string;
+  showCta?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
+  showStats?: boolean;
+}
+
+const {
+  title,
+  titleHighlight = '',
+  subtitle,
+  showCta = true,
+  ctaText = 'Schedule Your Evaluation',
+  ctaLink = '/#book',
+  showStats = false
+} = Astro.props;
+---
+
+<section class="hero" style="min-height: 60vh;">
+    <div class="hero-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+    <div class="container hero-content">
+        <h1 data-animate="fade-up">
+            <Fragment set:html={title} />
+            {titleHighlight && <span class="gradient-text">{titleHighlight}</span>}
+        </h1>
+        <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+            {subtitle}
+        </p>
+        {showCta && (
+            <div class="hero-cta" data-animate="fade-up" data-delay="300">
+                <a href={ctaLink} class="btn btn-primary btn-lg">
+                    {ctaText}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <slot name="secondary-cta" />
+            </div>
+        )}
+        {showStats && (
+            <div class="hero-stats" data-animate="fade-up" data-delay="400">
+                <div class="stat">
+                    <span class="stat-number">WA</span>
+                    <span class="stat-label">Washington</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">ID</span>
+                    <span class="stat-label">Idaho</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">UT</span>
+                    <span class="stat-label">Utah</span>
+                </div>
+            </div>
+        )}
+    </div>
+</section>

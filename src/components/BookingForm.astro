@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="cta-section" id="book">
+    <div class="cta-bg">
+        <div class="cta-orb cta-orb-1"></div>
+        <div class="cta-orb cta-orb-2"></div>
+    </div>
+    <div class="container">
+        <div class="cta-content" data-animate="fade-up">
+            <h2>Ready to Restore <span class="gradient-text">Your Health?</span></h2>
+            <p>Take the first step toward naturally restored health. Schedule your evaluation today and create your personalized treatment plan.</p>
+            <form class="booking-form" id="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select Service Interest</option>
+                            {sortedServices.map((service) => (
+                                <option value={service.slug}>{service.data.title}</option>
+                            ))}
+                            <option value="general">General Consultation</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: var(--space-md);">
+                    <textarea id="message" name="message" placeholder="Tell us about your health goals or concerns..." rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-full">
+                    <span>Schedule My Evaluation</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                <p class="form-note">Schedule your evaluation to create a personalized treatment plan.</p>
+            </form>
+        </div>
+    </div>
+</section>

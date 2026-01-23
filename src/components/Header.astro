@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+---
+
+<nav class="nav" id="nav">
+    <div class="nav-container">
+        <a href="/" class="logo">
+            <img src="/images/Bio Balance Logo Symbol.svg" alt="Bio Balance" class="logo-icon" style="width: 40px; height: 40px;">
+            <span class="logo-text" style="color: #171e60;">Bio Balance</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+            <div class="nav-dropdown">
+                <a href="/#services">
+                    Services
+                    <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    {sortedServices.map((service) => (
+                        <a href={`/services/${service.slug}/`}>{service.data.title}</a>
+                    ))}
+                </div>
+            </div>
+            <a href="/#approach">Our Approach</a>
+            <a href="/#process">How It Works</a>
+            <a href="/about/">About</a>
+            <a href="/#contact">Contact</a>
+        </div>
+        <a href="/#book" class="btn btn-primary nav-cta">Book Consultation</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
