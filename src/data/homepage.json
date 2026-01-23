@@ -1,0 +1,119 @@
+{
+  "hero": {
+    "title": "Your Health,",
+    "titleHighlight": "Naturally Restored",
+    "subtitle": "Integrative Medicine and Hormone Health Services for Wellness in WA, ID, and UT. We believe the body has the innate ability to heal itself.",
+    "ctaPrimary": "Schedule Your Evaluation",
+    "ctaSecondary": "Explore Services"
+  },
+  "painPoints": {
+    "tag": "Sound Familiar?",
+    "title": "The Signs Your Body Is",
+    "titleHighlight": "Out of Balance",
+    "cta": "These symptoms aren't inevitable signs of aging—they're signals your body needs support.",
+    "ctaButton": "Get Your Hormone Assessment",
+    "items": [
+      {
+        "title": "Persistent Fatigue",
+        "description": "Exhausted despite adequate sleep? Hormonal imbalances often disrupt your body's natural energy production."
+      },
+      {
+        "title": "Brain Fog",
+        "description": "Struggling to focus or remember? Cognitive clarity is directly linked to optimal hormone levels."
+      },
+      {
+        "title": "Stubborn Weight Gain",
+        "description": "Diet and exercise not working? Metabolic dysfunction from hormonal shifts may be the hidden culprit."
+      },
+      {
+        "title": "Low Libido",
+        "description": "Lost that spark? Sexual wellness is intimately connected to your hormonal health."
+      }
+    ]
+  },
+  "services": {
+    "tag": "Our Services",
+    "title": "Comprehensive",
+    "titleHighlight": "Treatment Solutions",
+    "description": "Utilizing diet, lifestyle modifications, natural supplements, hormone replacement, and traditional medications to optimize your health outcomes and longevity."
+  },
+  "approach": {
+    "tag": "Our Approach",
+    "title": "Integrative Medicine for",
+    "titleHighlight": "Natural Healing",
+    "lead": "We believe the body has the innate ability to heal itself. Our approach combines diet, lifestyle modifications, natural supplements, hormone replacement, and traditional medications to optimize your health outcomes and longevity.",
+    "features": [
+      {
+        "title": "Data-Driven Protocols",
+        "description": "Comprehensive bloodwork and diagnostics guide every decision."
+      },
+      {
+        "title": "Continuous Optimization",
+        "description": "Regular monitoring ensures your protocol evolves with your progress."
+      },
+      {
+        "title": "Holistic Integration",
+        "description": "We address lifestyle, nutrition, and stress alongside hormones."
+      }
+    ]
+  },
+  "process": {
+    "tag": "How It Works",
+    "title": "Your Path to",
+    "titleHighlight": "Optimal Health",
+    "description": "A streamlined journey from consultation to transformation.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Schedule Consultation",
+        "description": "Book your initial consultation to discuss symptoms, goals, and health history with our expert providers."
+      },
+      {
+        "number": "02",
+        "title": "Comprehensive Testing",
+        "description": "Advanced lab work reveals your complete hormonal profile, providing the data we need to customize your protocol."
+      },
+      {
+        "number": "03",
+        "title": "Custom Protocol",
+        "description": "Your personalized treatment plan is designed, addressing root causes with precision medicine approaches."
+      },
+      {
+        "number": "04",
+        "title": "Transform & Thrive",
+        "description": "Experience renewed energy, clarity, and vitality as your body returns to optimal function with ongoing support."
+      }
+    ]
+  },
+  "testimonials": {
+    "tag": "Success Stories",
+    "title": "Real Results,",
+    "titleHighlight": "Real Transformations"
+  },
+  "about": {
+    "tag": "About Bio Balance",
+    "title": "Integrative and",
+    "titleHighlight": "Hormone Health",
+    "paragraphs": [
+      "Bio Balance was founded on a simple belief: the body has the innate ability to heal itself. We specialize in integrative medicine and hormone health, serving patients throughout Washington, Idaho, and Utah via telemedicine.",
+      "Our approach utilizes diet, lifestyle modifications, natural supplements, hormone replacement, and traditional medications to optimize your health outcomes and longevity."
+    ],
+    "credentials": [
+      "Telemedicine Available",
+      "Serving WA, ID, UT",
+      "Personalized Care Plans"
+    ]
+  },
+  "cta": {
+    "title": "Ready to Restore",
+    "titleHighlight": "Your Health?",
+    "description": "Take the first step toward naturally restored health. Schedule your evaluation today and create your personalized treatment plan.",
+    "button": "Schedule My Evaluation"
+  },
+  "contact": {
+    "tag": "Contact Us",
+    "title": "Get in",
+    "titleHighlight": "Touch",
+    "description": "We're here to help you on your journey to optimal health."
+  }
+}

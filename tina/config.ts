@@ -292,6 +292,9 @@ export default defineConfig({
         label: "Site Settings",
         path: "src/data",
         format: "json",
+        match: {
+          include: "settings",
+        },
         ui: {
           allowedActions: {
             create: false,
@@ -379,6 +382,155 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
+          },
+        ],
+      },
+      {
+        name: "homepage",
+        label: "Homepage",
+        path: "src/data",
+        format: "json",
+        match: {
+          include: "homepage",
+        },
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "object",
+            name: "hero",
+            label: "Hero Section",
+            fields: [
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight (gradient text)" },
+              { type: "string", name: "subtitle", label: "Subtitle", ui: { component: "textarea" } },
+              { type: "string", name: "ctaPrimary", label: "Primary Button Text" },
+              { type: "string", name: "ctaSecondary", label: "Secondary Button Text" },
+            ],
+          },
+          {
+            type: "object",
+            name: "painPoints",
+            label: "Pain Points Section",
+            fields: [
+              { type: "string", name: "tag", label: "Section Tag" },
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+              { type: "string", name: "cta", label: "CTA Text" },
+              { type: "string", name: "ctaButton", label: "CTA Button Text" },
+              {
+                type: "object",
+                name: "items",
+                label: "Pain Point Items",
+                list: true,
+                fields: [
+                  { type: "string", name: "title", label: "Title" },
+                  { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+                ],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "services",
+            label: "Services Section",
+            fields: [
+              { type: "string", name: "tag", label: "Section Tag" },
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+              { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+            ],
+          },
+          {
+            type: "object",
+            name: "approach",
+            label: "Approach Section",
+            fields: [
+              { type: "string", name: "tag", label: "Section Tag" },
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+              { type: "string", name: "lead", label: "Lead Text", ui: { component: "textarea" } },
+              {
+                type: "object",
+                name: "features",
+                label: "Features",
+                list: true,
+                fields: [
+                  { type: "string", name: "title", label: "Title" },
+                  { type: "string", name: "description", label: "Description" },
+                ],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "process",
+            label: "Process Section",
+            fields: [
+              { type: "string", name: "tag", label: "Section Tag" },
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+              { type: "string", name: "description", label: "Description" },
+              {
+                type: "object",
+                name: "steps",
+                label: "Steps",
+                list: true,
+                fields: [
+                  { type: "string", name: "number", label: "Step Number" },
+                  { type: "string", name: "title", label: "Title" },
+                  { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+                ],
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "testimonials",
+            label: "Testimonials Section",
+            fields: [
+              { type: "string", name: "tag", label: "Section Tag" },
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+            ],
+          },
+          {
+            type: "object",
+            name: "about",
+            label: "About Section",
+            fields: [
+              { type: "string", name: "tag", label: "Section Tag" },
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+              { type: "string", name: "paragraphs", label: "Paragraphs", list: true, ui: { component: "textarea" } },
+              { type: "string", name: "credentials", label: "Credentials", list: true },
+            ],
+          },
+          {
+            type: "object",
+            name: "cta",
+            label: "CTA Section",
+            fields: [
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+              { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+              { type: "string", name: "button", label: "Button Text" },
+            ],
+          },
+          {
+            type: "object",
+            name: "contact",
+            label: "Contact Section",
+            fields: [
+              { type: "string", name: "tag", label: "Section Tag" },
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "titleHighlight", label: "Title Highlight" },
+              { type: "string", name: "description", label: "Description" },
+            ],
           },
         ],
       },

@@ -8,8 +8,16 @@
   "location": "Spokane, WA",
   "telemedicineNote": "Telemedicine Available",
   "hours": "Monday - Friday, 9 AM - 5 PM",
-  "statesServed": ["Washington", "Idaho", "Utah"],
-  "statesServedAbbr": ["WA", "ID", "UT"],
-  "year": 2024,
+  "statesServed": [
+    "Washington",
+    "Idaho",
+    "Utah"
+  ],
+  "statesServedAbbr": [
+    "WA",
+    "ID",
+    "UT"
+  ],
+  "year": 2026,
   "disclaimer": "The information on this website is for educational purposes only and is not intended as medical advice. Always consult with a qualified healthcare provider."
 }

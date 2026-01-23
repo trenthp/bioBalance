@@ -62,6 +62,8 @@ type Query {
   teamConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TeamFilter): TeamConnection!
   settings(relativePath: String): Settings!
   settingsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SettingsFilter): SettingsConnection!
+  homepage(relativePath: String): Homepage!
+  homepageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomepageFilter): HomepageConnection!
 }
 
 input DocumentFilter {
@@ -69,6 +71,7 @@ input DocumentFilter {
   testimonials: TestimonialsFilter
   team: TeamFilter
   settings: SettingsFilter
+  homepage: HomepageFilter
 }
 
 type DocumentConnectionEdges {
@@ -94,7 +97,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Services | Testimonials | Team | Settings | Folder
+union DocumentNode = Services | Testimonials | Team | Settings | Homepage | Folder
 
 type ServicesBenefits {
   title: String!
@@ -301,6 +304,212 @@ type SettingsConnection implements Connection {
   edges: [SettingsConnectionEdges]
 }
 
+type HomepageHero {
+  title: String
+  titleHighlight: String
+  subtitle: String
+  ctaPrimary: String
+  ctaSecondary: String
+}
+
+type HomepagePainPointsItems {
+  title: String
+  description: String
+}
+
+type HomepagePainPoints {
+  tag: String
+  title: String
+  titleHighlight: String
+  cta: String
+  ctaButton: String
+  items: [HomepagePainPointsItems]
+}
+
+type HomepageServices {
+  tag: String
+  title: String
+  titleHighlight: String
+  description: String
+}
+
+type HomepageApproachFeatures {
+  title: String
+  description: String
+}
+
+type HomepageApproach {
+  tag: String
+  title: String
+  titleHighlight: String
+  lead: String
+  features: [HomepageApproachFeatures]
+}
+
+type HomepageProcessSteps {
+  number: String
+  title: String
+  description: String
+}
+
+type HomepageProcess {
+  tag: String
+  title: String
+  titleHighlight: String
+  description: String
+  steps: [HomepageProcessSteps]
+}
+
+type HomepageTestimonials {
+  tag: String
+  title: String
+  titleHighlight: String
+}
+
+type HomepageAbout {
+  tag: String
+  title: String
+  titleHighlight: String
+  paragraphs: [String]
+  credentials: [String]
+}
+
+type HomepageCta {
+  title: String
+  titleHighlight: String
+  description: String
+  button: String
+}
+
+type HomepageContact {
+  tag: String
+  title: String
+  titleHighlight: String
+  description: String
+}
+
+type Homepage implements Node & Document {
+  hero: HomepageHero
+  painPoints: HomepagePainPoints
+  services: HomepageServices
+  approach: HomepageApproach
+  process: HomepageProcess
+  testimonials: HomepageTestimonials
+  about: HomepageAbout
+  cta: HomepageCta
+  contact: HomepageContact
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input HomepageHeroFilter {
+  title: StringFilter
+  titleHighlight: StringFilter
+  subtitle: StringFilter
+  ctaPrimary: StringFilter
+  ctaSecondary: StringFilter
+}
+
+input HomepagePainPointsItemsFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
+input HomepagePainPointsFilter {
+  tag: StringFilter
+  title: StringFilter
+  titleHighlight: StringFilter
+  cta: StringFilter
+  ctaButton: StringFilter
+  items: HomepagePainPointsItemsFilter
+}
+
+input HomepageServicesFilter {
+  tag: StringFilter
+  title: StringFilter
+  titleHighlight: StringFilter
+  description: StringFilter
+}
+
+input HomepageApproachFeaturesFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
+input HomepageApproachFilter {
+  tag: StringFilter
+  title: StringFilter
+  titleHighlight: StringFilter
+  lead: StringFilter
+  features: HomepageApproachFeaturesFilter
+}
+
+input HomepageProcessStepsFilter {
+  number: StringFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input HomepageProcessFilter {
+  tag: StringFilter
+  title: StringFilter
+  titleHighlight: StringFilter
+  description: StringFilter
+  steps: HomepageProcessStepsFilter
+}
+
+input HomepageTestimonialsFilter {
+  tag: StringFilter
+  title: StringFilter
+  titleHighlight: StringFilter
+}
+
+input HomepageAboutFilter {
+  tag: StringFilter
+  title: StringFilter
+  titleHighlight: StringFilter
+  paragraphs: StringFilter
+  credentials: StringFilter
+}
+
+input HomepageCtaFilter {
+  title: StringFilter
+  titleHighlight: StringFilter
+  description: StringFilter
+  button: StringFilter
+}
+
+input HomepageContactFilter {
+  tag: StringFilter
+  title: StringFilter
+  titleHighlight: StringFilter
+  description: StringFilter
+}
+
+input HomepageFilter {
+  hero: HomepageHeroFilter
+  painPoints: HomepagePainPointsFilter
+  services: HomepageServicesFilter
+  approach: HomepageApproachFilter
+  process: HomepageProcessFilter
+  testimonials: HomepageTestimonialsFilter
+  about: HomepageAboutFilter
+  cta: HomepageCtaFilter
+  contact: HomepageContactFilter
+}
+
+type HomepageConnectionEdges {
+  cursor: String!
+  node: Homepage
+}
+
+type HomepageConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [HomepageConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -315,6 +524,8 @@ type Mutation {
   createTeam(relativePath: String!, params: TeamMutation!): Team!
   updateSettings(relativePath: String!, params: SettingsMutation!): Settings!
   createSettings(relativePath: String!, params: SettingsMutation!): Settings!
+  updateHomepage(relativePath: String!, params: HomepageMutation!): Homepage!
+  createHomepage(relativePath: String!, params: HomepageMutation!): Homepage!
 }
 
 input DocumentUpdateMutation {
@@ -322,6 +533,7 @@ input DocumentUpdateMutation {
   testimonials: TestimonialsMutation
   team: TeamMutation
   settings: SettingsMutation
+  homepage: HomepageMutation
   relativePath: String
 }
 
@@ -330,6 +542,7 @@ input DocumentMutation {
   testimonials: TestimonialsMutation
   team: TeamMutation
   settings: SettingsMutation
+  homepage: HomepageMutation
 }
 
 input ServicesBenefitsMutation {
@@ -393,6 +606,102 @@ input SettingsMutation {
   statesServedAbbr: [String]
   year: Float
   disclaimer: String
+}
+
+input HomepageHeroMutation {
+  title: String
+  titleHighlight: String
+  subtitle: String
+  ctaPrimary: String
+  ctaSecondary: String
+}
+
+input HomepagePainPointsItemsMutation {
+  title: String
+  description: String
+}
+
+input HomepagePainPointsMutation {
+  tag: String
+  title: String
+  titleHighlight: String
+  cta: String
+  ctaButton: String
+  items: [HomepagePainPointsItemsMutation]
+}
+
+input HomepageServicesMutation {
+  tag: String
+  title: String
+  titleHighlight: String
+  description: String
+}
+
+input HomepageApproachFeaturesMutation {
+  title: String
+  description: String
+}
+
+input HomepageApproachMutation {
+  tag: String
+  title: String
+  titleHighlight: String
+  lead: String
+  features: [HomepageApproachFeaturesMutation]
+}
+
+input HomepageProcessStepsMutation {
+  number: String
+  title: String
+  description: String
+}
+
+input HomepageProcessMutation {
+  tag: String
+  title: String
+  titleHighlight: String
+  description: String
+  steps: [HomepageProcessStepsMutation]
+}
+
+input HomepageTestimonialsMutation {
+  tag: String
+  title: String
+  titleHighlight: String
+}
+
+input HomepageAboutMutation {
+  tag: String
+  title: String
+  titleHighlight: String
+  paragraphs: [String]
+  credentials: [String]
+}
+
+input HomepageCtaMutation {
+  title: String
+  titleHighlight: String
+  description: String
+  button: String
+}
+
+input HomepageContactMutation {
+  tag: String
+  title: String
+  titleHighlight: String
+  description: String
+}
+
+input HomepageMutation {
+  hero: HomepageHeroMutation
+  painPoints: HomepagePainPointsMutation
+  services: HomepageServicesMutation
+  approach: HomepageApproachMutation
+  process: HomepageProcessMutation
+  testimonials: HomepageTestimonialsMutation
+  about: HomepageAboutMutation
+  cta: HomepageCtaMutation
+  contact: HomepageContactMutation
 }
 
 schema {

@@ -63,3 +63,88 @@ fragment SettingsParts on Settings {
   year
   disclaimer
 }
+
+fragment HomepageParts on Homepage {
+  __typename
+  hero {
+    __typename
+    title
+    titleHighlight
+    subtitle
+    ctaPrimary
+    ctaSecondary
+  }
+  painPoints {
+    __typename
+    tag
+    title
+    titleHighlight
+    cta
+    ctaButton
+    items {
+      __typename
+      title
+      description
+    }
+  }
+  services {
+    __typename
+    tag
+    title
+    titleHighlight
+    description
+  }
+  approach {
+    __typename
+    tag
+    title
+    titleHighlight
+    lead
+    features {
+      __typename
+      title
+      description
+    }
+  }
+  process {
+    __typename
+    tag
+    title
+    titleHighlight
+    description
+    steps {
+      __typename
+      number
+      title
+      description
+    }
+  }
+  testimonials {
+    __typename
+    tag
+    title
+    titleHighlight
+  }
+  about {
+    __typename
+    tag
+    title
+    titleHighlight
+    paragraphs
+    credentials
+  }
+  cta {
+    __typename
+    title
+    titleHighlight
+    description
+    button
+  }
+  contact {
+    __typename
+    tag
+    title
+    titleHighlight
+    description
+  }
+}
