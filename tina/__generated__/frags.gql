@@ -1,0 +1,65 @@
+fragment ServicesParts on Services {
+  __typename
+  title
+  shortTitle
+  description
+  metaDescription
+  heroSubtitle
+  sectionTag
+  sectionTitle
+  sectionTitleHighlight
+  intro
+  credentials
+  symptomsTitle
+  symptoms
+  benefitsTag
+  benefitsTitle
+  benefitsTitleHighlight
+  benefits {
+    __typename
+    title
+    description
+  }
+  ctaTitle
+  ctaTitleHighlight
+  ctaDescription
+  order
+  body
+}
+
+fragment TestimonialsParts on Testimonials {
+  __typename
+  quote
+  authorName
+  authorInitials
+  authorDetail
+  rating
+  order
+}
+
+fragment TeamParts on Team {
+  __typename
+  name
+  title
+  role
+  credentials
+  order
+  body
+}
+
+fragment SettingsParts on Settings {
+  __typename
+  siteName
+  siteTagline
+  siteDescription
+  phone
+  fax
+  email
+  location
+  telemedicineNote
+  hours
+  statesServed
+  statesServedAbbr
+  year
+  disclaimer
+}

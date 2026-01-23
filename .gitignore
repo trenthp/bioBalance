@@ -10,8 +10,8 @@ dist/
 .env.local
 .env.production
 
-# TinaCMS generated files
-tina/__generated__/
+# TinaCMS admin build (generated at runtime)
+public/admin/
 
 # IDE
 .vscode/
