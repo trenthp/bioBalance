@@ -7,5 +7,4 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   site: 'https://biobalancehrt.com',
-  trailingSlash: 'always',
 });

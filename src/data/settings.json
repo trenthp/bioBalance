@@ -3,15 +3,23 @@
   "siteTagline": "Integrative and Hormone Health",
   "siteDescription": "Bio Balance Integrative and Hormone Health - Your Health, Naturally Restored. Integrative Medicine and Hormone Health Services in WA, ID, and UT.",
   "phone": "509-435-0454",
-  "fax": "509-435-0530",
+  "fax": "509-435-0430",
   "email": "info@biobalancehrt.com",
   "location": "Spokane, WA",
   "telemedicineNote": "Telemedicine Available",
   "scheduleUrl": "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=eElyWUpjUHNhR1M0SVhOdDMwdWt6QT09&lid=VGtEZlVMMlBGbEczcDJnaHkweitKUT09",
   "portalUrl": "https://www.optimantra.com/optimus/om/patient/login?accessPoint=WGVXWGJvOEdQdE1tL0QzaTlMbVh5Zz09",
   "hours": "Monday - Friday, 9 AM - 5 PM",
-  "statesServed": ["Washington", "Idaho", "Utah"],
-  "statesServedAbbr": ["WA", "ID", "UT"],
-  "year": 2024,
+  "statesServed": [
+    "Washington",
+    "Idaho",
+    "Utah"
+  ],
+  "statesServedAbbr": [
+    "WA",
+    "ID",
+    "UT"
+  ],
+  "year": 2026,
   "disclaimer": "The information on this website is for educational purposes only and is not intended as medical advice. Always consult with a qualified healthcare provider."
 }

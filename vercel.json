@@ -8,5 +8,8 @@
     { "source": "/services/thyroid.html", "destination": "/services/thyroid/", "permanent": true },
     { "source": "/services/pcos.html", "destination": "/services/pcos/", "permanent": true },
     { "source": "/services/weight-loss.html", "destination": "/services/weight-loss/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin/index.html" }
   ]
 }

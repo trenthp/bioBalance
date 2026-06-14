@@ -1,29 +1,21 @@
+// tina/config.ts
 import { defineConfig } from "tinacms";
-
-// Your hosting provider likely exposes this as an environment variable
-const branch =
-  process.env.GITHUB_BRANCH ||
-  process.env.VERCEL_GIT_COMMIT_REF ||
-  process.env.HEAD ||
-  "main";
-
-export default defineConfig({
+var branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "main";
+var config_default = defineConfig({
   branch,
-
   // Get this from tina.io
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   // Get this from tina.io
   token: process.env.TINA_TOKEN,
-
   build: {
     outputFolder: "admin",
-    publicFolder: "public",
+    publicFolder: "public"
   },
   media: {
     tina: {
       mediaRoot: "images",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
@@ -39,58 +31,58 @@ export default defineConfig({
             name: "title",
             label: "Title",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "shortTitle",
             label: "Short Title (for navigation)",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "description",
             label: "Description",
             ui: {
-              component: "textarea",
+              component: "textarea"
             },
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "metaDescription",
             label: "Meta Description (SEO)",
             ui: {
-              component: "textarea",
+              component: "textarea"
             },
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "heroSubtitle",
             label: "Hero Subtitle",
             ui: {
-              component: "textarea",
+              component: "textarea"
             },
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "sectionTag",
             label: "Section Tag",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "sectionTitle",
             label: "Section Title",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "sectionTitleHighlight",
             label: "Section Title Highlight",
-            required: true,
+            required: true
           },
           {
             type: "string",
@@ -98,44 +90,44 @@ export default defineConfig({
             label: "Introduction Paragraphs",
             list: true,
             ui: {
-              component: "textarea",
-            },
+              component: "textarea"
+            }
           },
           {
             type: "string",
             name: "credentials",
             label: "Credentials/Features",
-            list: true,
+            list: true
           },
           {
             type: "string",
             name: "symptomsTitle",
             label: "Symptoms Section Title",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "symptoms",
             label: "Symptoms List",
-            list: true,
+            list: true
           },
           {
             type: "string",
             name: "benefitsTag",
             label: "Benefits Section Tag",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "benefitsTitle",
             label: "Benefits Title",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "benefitsTitleHighlight",
             label: "Benefits Title Highlight",
-            required: true,
+            required: true
           },
           {
             type: "object",
@@ -147,53 +139,53 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Title",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "description",
                 label: "Description",
                 ui: {
-                  component: "textarea",
+                  component: "textarea"
                 },
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             type: "string",
             name: "ctaTitle",
             label: "CTA Title",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "ctaTitleHighlight",
             label: "CTA Title Highlight",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "ctaDescription",
             label: "CTA Description",
             ui: {
-              component: "textarea",
+              component: "textarea"
             },
-            required: true,
+            required: true
           },
           {
             type: "number",
             name: "order",
             label: "Display Order",
-            required: true,
+            required: true
           },
           {
             type: "rich-text",
             name: "body",
             label: "Body",
-            isBody: true,
-          },
-        ],
+            isBody: true
+          }
+        ]
       },
       {
         name: "testimonials",
@@ -206,41 +198,41 @@ export default defineConfig({
             name: "quote",
             label: "Quote",
             ui: {
-              component: "textarea",
+              component: "textarea"
             },
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "authorName",
             label: "Author Name",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "authorInitials",
             label: "Author Initials",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "authorDetail",
             label: "Author Detail (e.g., 'BHRT Patient, 18 months')",
-            required: true,
+            required: true
           },
           {
             type: "number",
             name: "rating",
             label: "Rating (1-5)",
-            required: true,
+            required: true
           },
           {
             type: "number",
             name: "order",
             label: "Display Order",
-            required: true,
-          },
-        ],
+            required: true
+          }
+        ]
       },
       {
         name: "team",
@@ -253,39 +245,39 @@ export default defineConfig({
             name: "name",
             label: "Name",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "title",
             label: "Title",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "role",
             label: "Role",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "credentials",
             label: "Credentials",
-            list: true,
+            list: true
           },
           {
             type: "number",
             name: "order",
             label: "Display Order",
-            required: true,
+            required: true
           },
           {
             type: "rich-text",
             name: "body",
             label: "Bio",
-            isBody: true,
-          },
-        ],
+            isBody: true
+          }
+        ]
       },
       {
         name: "settings",
@@ -293,109 +285,97 @@ export default defineConfig({
         path: "src/data",
         format: "json",
         match: {
-          include: "settings",
+          include: "settings"
         },
         ui: {
           allowedActions: {
             create: false,
-            delete: false,
-          },
+            delete: false
+          }
         },
         fields: [
           {
             type: "string",
             name: "siteName",
             label: "Site Name",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "siteTagline",
             label: "Site Tagline",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "siteDescription",
             label: "Site Description (SEO)",
             ui: {
-              component: "textarea",
+              component: "textarea"
             },
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "phone",
             label: "Phone Number",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "fax",
-            label: "Fax Number",
+            label: "Fax Number"
           },
           {
             type: "string",
             name: "email",
             label: "Email Address",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "location",
             label: "Location",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "telemedicineNote",
-            label: "Telemedicine Note",
-          },
-          {
-            type: "string",
-            name: "scheduleUrl",
-            label: "Schedule Appointment URL (OptiMantra)",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "portalUrl",
-            label: "Patient Portal URL (OptiMantra)",
-            required: true,
+            label: "Telemedicine Note"
           },
           {
             type: "string",
             name: "hours",
             label: "Office Hours",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "statesServed",
             label: "States Served (full names)",
-            list: true,
+            list: true
           },
           {
             type: "string",
             name: "statesServedAbbr",
             label: "States Served (abbreviations)",
-            list: true,
+            list: true
           },
           {
             type: "number",
             name: "year",
             label: "Copyright Year",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "disclaimer",
             label: "Disclaimer Text",
             ui: {
-              component: "textarea",
-            },
-          },
-        ],
+              component: "textarea"
+            }
+          }
+        ]
       },
       {
         name: "homepage",
@@ -403,13 +383,13 @@ export default defineConfig({
         path: "src/data",
         format: "json",
         match: {
-          include: "homepage",
+          include: "homepage"
         },
         ui: {
           allowedActions: {
             create: false,
-            delete: false,
-          },
+            delete: false
+          }
         },
         fields: [
           {
@@ -421,8 +401,8 @@ export default defineConfig({
               { type: "string", name: "titleHighlight", label: "Title Highlight (gradient text)" },
               { type: "string", name: "subtitle", label: "Subtitle", ui: { component: "textarea" } },
               { type: "string", name: "ctaPrimary", label: "Primary Button Text" },
-              { type: "string", name: "ctaSecondary", label: "Secondary Button Text" },
-            ],
+              { type: "string", name: "ctaSecondary", label: "Secondary Button Text" }
+            ]
           },
           {
             type: "object",
@@ -441,10 +421,10 @@ export default defineConfig({
                 list: true,
                 fields: [
                   { type: "string", name: "title", label: "Title" },
-                  { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
-                ],
-              },
-            ],
+                  { type: "string", name: "description", label: "Description", ui: { component: "textarea" } }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -454,8 +434,8 @@ export default defineConfig({
               { type: "string", name: "tag", label: "Section Tag" },
               { type: "string", name: "title", label: "Title" },
               { type: "string", name: "titleHighlight", label: "Title Highlight" },
-              { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
-            ],
+              { type: "string", name: "description", label: "Description", ui: { component: "textarea" } }
+            ]
           },
           {
             type: "object",
@@ -473,10 +453,10 @@ export default defineConfig({
                 list: true,
                 fields: [
                   { type: "string", name: "title", label: "Title" },
-                  { type: "string", name: "description", label: "Description" },
-                ],
-              },
-            ],
+                  { type: "string", name: "description", label: "Description" }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -495,10 +475,10 @@ export default defineConfig({
                 fields: [
                   { type: "string", name: "number", label: "Step Number" },
                   { type: "string", name: "title", label: "Title" },
-                  { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
-                ],
-              },
-            ],
+                  { type: "string", name: "description", label: "Description", ui: { component: "textarea" } }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -507,8 +487,8 @@ export default defineConfig({
             fields: [
               { type: "string", name: "tag", label: "Section Tag" },
               { type: "string", name: "title", label: "Title" },
-              { type: "string", name: "titleHighlight", label: "Title Highlight" },
-            ],
+              { type: "string", name: "titleHighlight", label: "Title Highlight" }
+            ]
           },
           {
             type: "object",
@@ -519,8 +499,8 @@ export default defineConfig({
               { type: "string", name: "title", label: "Title" },
               { type: "string", name: "titleHighlight", label: "Title Highlight" },
               { type: "string", name: "paragraphs", label: "Paragraphs", list: true, ui: { component: "textarea" } },
-              { type: "string", name: "credentials", label: "Credentials", list: true },
-            ],
+              { type: "string", name: "credentials", label: "Credentials", list: true }
+            ]
           },
           {
             type: "object",
@@ -530,8 +510,8 @@ export default defineConfig({
               { type: "string", name: "title", label: "Title" },
               { type: "string", name: "titleHighlight", label: "Title Highlight" },
               { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
-              { type: "string", name: "button", label: "Button Text" },
-            ],
+              { type: "string", name: "button", label: "Button Text" }
+            ]
           },
           {
             type: "object",
@@ -541,11 +521,14 @@ export default defineConfig({
               { type: "string", name: "tag", label: "Section Tag" },
               { type: "string", name: "title", label: "Title" },
               { type: "string", name: "titleHighlight", label: "Title Highlight" },
-              { type: "string", name: "description", label: "Description" },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+              { type: "string", name: "description", label: "Description" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 });
+export {
+  config_default as default
+};
