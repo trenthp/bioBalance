@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initCounterAnimations();
     initSmoothScroll();
-    initBookingForm();
     initParallaxOrbs();
 });
 
@@ -165,71 +164,6 @@ function initSmoothScroll() {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-            }
-        });
-    });
-}
-
-/**
- * Booking Form - Validation and submission
- */
-function initBookingForm() {
-    const form = document.getElementById('booking-form');
-
-    form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-
-        // Show loading state
-        submitBtn.innerHTML = `
-            <span>Submitting...</span>
-            <svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
-                <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
-            </svg>
-        `;
-        submitBtn.disabled = true;
-
-        // Add spinner animation
-        const spinner = submitBtn.querySelector('.spinner');
-        if (spinner) {
-            spinner.style.animation = 'spin 1s linear infinite';
-        }
-
-        // Simulate form submission (replace with actual API call)
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // Show success state
-        submitBtn.innerHTML = `
-            <span>Request Received!</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                <path d="M22 4L12 14.01l-3-3"/>
-            </svg>
-        `;
-        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-
-        // Reset form after delay
-        setTimeout(() => {
-            form.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-            submitBtn.disabled = false;
-        }, 3000);
-    });
-
-    // Add floating label effect
-    const inputs = form?.querySelectorAll('input, select');
-    inputs?.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.parentElement.classList.add('focused');
-        });
-
-        input.addEventListener('blur', () => {
-            if (!input.value) {
-                input.parentElement.classList.remove('focused');
             }
         });
     });

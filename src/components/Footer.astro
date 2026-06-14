@@ -31,13 +31,14 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
                     <li><a href="/#approach">Our Approach</a></li>
                     <li><a href="/#process">How It Works</a></li>
                     <li><a href="/#contact">Contact</a></li>
+                    <li><a href={settings.portalUrl} target="_blank" rel="noopener noreferrer">Patient Portal</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
                 <h4>Get In Touch</h4>
                 <p><a href={`tel:${settings.phone}`} style="color: var(--color-text-muted);">{settings.phone}</a></p>
                 <p><a href={`mailto:${settings.email}`} style="color: var(--color-text-muted);">{settings.email}</a></p>
-                <p style="margin-top: 1rem;"><a href="/#book" class="btn btn-primary">Book Consultation</a></p>
+                <p style="margin-top: 1rem;"><a href={settings.scheduleUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book Consultation</a></p>
             </div>
         </div>
         <div class="footer-bottom">

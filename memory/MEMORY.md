@@ -1,0 +1,2 @@
+- [OptiMantra integration](optimantra-integration.md) — scheduling/portal links live in settings.json; no custom booking form
+- [Supplement store plan](supplement-store-plan.md) — deferred; Fullscript vs Snipcart+Tina vs Shopify, hinges on whether they sell own-branded products
