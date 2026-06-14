@@ -345,6 +345,18 @@ var config_default = defineConfig({
           },
           {
             type: "string",
+            name: "scheduleUrl",
+            label: "Schedule Appointment URL (OptiMantra)",
+            required: true
+          },
+          {
+            type: "string",
+            name: "portalUrl",
+            label: "Patient Portal URL (OptiMantra)",
+            required: true
+          },
+          {
+            type: "string",
             name: "hours",
             label: "Office Hours",
             required: true

@@ -57,6 +57,8 @@ fragment SettingsParts on Settings {
   email
   location
   telemedicineNote
+  scheduleUrl
+  portalUrl
   hours
   statesServed
   statesServedAbbr

@@ -267,6 +267,8 @@ type Settings implements Node & Document {
   email: String!
   location: String!
   telemedicineNote: String
+  scheduleUrl: String!
+  portalUrl: String!
   hours: String!
   statesServed: [String]
   statesServedAbbr: [String]
@@ -286,6 +288,8 @@ input SettingsFilter {
   email: StringFilter
   location: StringFilter
   telemedicineNote: StringFilter
+  scheduleUrl: StringFilter
+  portalUrl: StringFilter
   hours: StringFilter
   statesServed: StringFilter
   statesServedAbbr: StringFilter
@@ -601,6 +605,8 @@ input SettingsMutation {
   email: String
   location: String
   telemedicineNote: String
+  scheduleUrl: String
+  portalUrl: String
   hours: String
   statesServed: [String]
   statesServedAbbr: [String]

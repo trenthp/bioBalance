@@ -416,6 +416,8 @@ export type Settings = Node & Document & {
   email: Scalars['String']['output'];
   location: Scalars['String']['output'];
   telemedicineNote?: Maybe<Scalars['String']['output']>;
+  scheduleUrl: Scalars['String']['output'];
+  portalUrl: Scalars['String']['output'];
   hours: Scalars['String']['output'];
   statesServed?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   statesServedAbbr?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -435,6 +437,8 @@ export type SettingsFilter = {
   email?: InputMaybe<StringFilter>;
   location?: InputMaybe<StringFilter>;
   telemedicineNote?: InputMaybe<StringFilter>;
+  scheduleUrl?: InputMaybe<StringFilter>;
+  portalUrl?: InputMaybe<StringFilter>;
   hours?: InputMaybe<StringFilter>;
   statesServed?: InputMaybe<StringFilter>;
   statesServedAbbr?: InputMaybe<StringFilter>;
@@ -861,6 +865,8 @@ export type SettingsMutation = {
   email?: InputMaybe<Scalars['String']['input']>;
   location?: InputMaybe<Scalars['String']['input']>;
   telemedicineNote?: InputMaybe<Scalars['String']['input']>;
+  scheduleUrl?: InputMaybe<Scalars['String']['input']>;
+  portalUrl?: InputMaybe<Scalars['String']['input']>;
   hours?: InputMaybe<Scalars['String']['input']>;
   statesServed?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   statesServedAbbr?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -970,7 +976,7 @@ export type TestimonialsPartsFragment = { __typename: 'Testimonials', quote: str
 
 export type TeamPartsFragment = { __typename: 'Team', name: string, title: string, role: string, credentials?: Array<string | null> | null, order: number, body?: any | null };
 
-export type SettingsPartsFragment = { __typename: 'Settings', siteName: string, siteTagline: string, siteDescription: string, phone: string, fax?: string | null, email: string, location: string, telemedicineNote?: string | null, hours: string, statesServed?: Array<string | null> | null, statesServedAbbr?: Array<string | null> | null, year: number, disclaimer?: string | null };
+export type SettingsPartsFragment = { __typename: 'Settings', siteName: string, siteTagline: string, siteDescription: string, phone: string, fax?: string | null, email: string, location: string, telemedicineNote?: string | null, scheduleUrl: string, portalUrl: string, hours: string, statesServed?: Array<string | null> | null, statesServedAbbr?: Array<string | null> | null, year: number, disclaimer?: string | null };
 
 export type HomepagePartsFragment = { __typename: 'Homepage', hero?: { __typename: 'HomepageHero', title?: string | null, titleHighlight?: string | null, subtitle?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null } | null, painPoints?: { __typename: 'HomepagePainPoints', tag?: string | null, title?: string | null, titleHighlight?: string | null, cta?: string | null, ctaButton?: string | null, items?: Array<{ __typename: 'HomepagePainPointsItems', title?: string | null, description?: string | null } | null> | null } | null, services?: { __typename: 'HomepageServices', tag?: string | null, title?: string | null, titleHighlight?: string | null, description?: string | null } | null, approach?: { __typename: 'HomepageApproach', tag?: string | null, title?: string | null, titleHighlight?: string | null, lead?: string | null, features?: Array<{ __typename: 'HomepageApproachFeatures', title?: string | null, description?: string | null } | null> | null } | null, process?: { __typename: 'HomepageProcess', tag?: string | null, title?: string | null, titleHighlight?: string | null, description?: string | null, steps?: Array<{ __typename: 'HomepageProcessSteps', number?: string | null, title?: string | null, description?: string | null } | null> | null } | null, testimonials?: { __typename: 'HomepageTestimonials', tag?: string | null, title?: string | null, titleHighlight?: string | null } | null, about?: { __typename: 'HomepageAbout', tag?: string | null, title?: string | null, titleHighlight?: string | null, paragraphs?: Array<string | null> | null, credentials?: Array<string | null> | null } | null, cta?: { __typename: 'HomepageCta', title?: string | null, titleHighlight?: string | null, description?: string | null, button?: string | null } | null, contact?: { __typename: 'HomepageContact', tag?: string | null, title?: string | null, titleHighlight?: string | null, description?: string | null } | null };
 
@@ -1036,7 +1042,7 @@ export type SettingsQueryVariables = Exact<{
 }>;
 
 
-export type SettingsQuery = { __typename?: 'Query', settings: { __typename: 'Settings', id: string, siteName: string, siteTagline: string, siteDescription: string, phone: string, fax?: string | null, email: string, location: string, telemedicineNote?: string | null, hours: string, statesServed?: Array<string | null> | null, statesServedAbbr?: Array<string | null> | null, year: number, disclaimer?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type SettingsQuery = { __typename?: 'Query', settings: { __typename: 'Settings', id: string, siteName: string, siteTagline: string, siteDescription: string, phone: string, fax?: string | null, email: string, location: string, telemedicineNote?: string | null, scheduleUrl: string, portalUrl: string, hours: string, statesServed?: Array<string | null> | null, statesServedAbbr?: Array<string | null> | null, year: number, disclaimer?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type SettingsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1048,7 +1054,7 @@ export type SettingsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SettingsConnectionQuery = { __typename?: 'Query', settingsConnection: { __typename?: 'SettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SettingsConnectionEdges', cursor: string, node?: { __typename: 'Settings', id: string, siteName: string, siteTagline: string, siteDescription: string, phone: string, fax?: string | null, email: string, location: string, telemedicineNote?: string | null, hours: string, statesServed?: Array<string | null> | null, statesServedAbbr?: Array<string | null> | null, year: number, disclaimer?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type SettingsConnectionQuery = { __typename?: 'Query', settingsConnection: { __typename?: 'SettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SettingsConnectionEdges', cursor: string, node?: { __typename: 'Settings', id: string, siteName: string, siteTagline: string, siteDescription: string, phone: string, fax?: string | null, email: string, location: string, telemedicineNote?: string | null, scheduleUrl: string, portalUrl: string, hours: string, statesServed?: Array<string | null> | null, statesServedAbbr?: Array<string | null> | null, year: number, disclaimer?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type HomepageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1132,6 +1138,8 @@ export const SettingsPartsFragmentDoc = gql`
   email
   location
   telemedicineNote
+  scheduleUrl
+  portalUrl
   hours
   statesServed
   statesServedAbbr
@@ -1590,7 +1598,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "http://localhost:4001/graphql",
+        url: "https://content.tinajs.io/2.0/content/7636c9c4-69dc-4f63-b1d6-7a7d8c271442/github/main",
         queries,
       })
     )
