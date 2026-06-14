@@ -7,6 +7,8 @@
   "email": "info@biobalancehrt.com",
   "location": "Spokane, WA",
   "telemedicineNote": "Telemedicine Available",
+  "scheduleUrl": "https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=eElyWUpjUHNhR1M0SVhOdDMwdWt6QT09&lid=VGtEZlVMMlBGbEczcDJnaHkweitKUT09",
+  "portalUrl": "https://www.optimantra.com/optimus/om/patient/login?accessPoint=WGVXWGJvOEdQdE1tL0QzaTlMbVh5Zz09",
   "hours": "Monday - Friday, 9 AM - 5 PM",
   "statesServed": ["Washington", "Idaho", "Utah"],
   "statesServedAbbr": ["WA", "ID", "UT"],

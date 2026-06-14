@@ -138,7 +138,7 @@ const sortedTeam = team.sort((a, b) => a.data.order - b.data.order);
             <div class="cta-content" data-animate="fade-up">
                 <h2>Ready to <span class="gradient-text">Get Started?</span></h2>
                 <p>Schedule your consultation today and take the first step toward naturally restored health.</p>
-                <a href="/#book" class="btn btn-primary btn-lg">
+                <a href={settings.scheduleUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
                     Schedule Your Evaluation
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import settings from '../../data/settings.json';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -32,7 +33,7 @@ const { data } = service;
                 {data.heroSubtitle}
             </p>
             <div class="hero-cta" data-animate="fade-up" data-delay="300">
-                <a href="/#book" class="btn btn-primary btn-lg">
+                <a href={settings.scheduleUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
                     Schedule Your Evaluation
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -116,7 +117,7 @@ const { data } = service;
             <div class="cta-content" data-animate="fade-up">
                 <h2>{data.ctaTitle} <span class="gradient-text">{data.ctaTitleHighlight}</span></h2>
                 <p>{data.ctaDescription}</p>
-                <a href="/#book" class="btn btn-primary btn-lg">
+                <a href={settings.scheduleUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
                     Schedule Your Evaluation
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
